@@ -21,7 +21,7 @@ const TodoItemGrid: React.FC<Props> = ({ todoItem }) => {
   };
 
   return (
-    <div className="rounded-xl border bg-stone-100 p-4">
+    <div className="rounded-xl border bg-stone-100 p-4 duration-300 hover:border-[#6b7280]">
       <div className="flex items-center justify-between">
         <h1
           className="rounded-full border px-4 py-0.5"
@@ -40,8 +40,12 @@ const TodoItemGrid: React.FC<Props> = ({ todoItem }) => {
           </BaseButton>
           <AnimatePresence>
             {showMenu && (
-              <AnimatedItem animation="opacity">
-                <ul className="absolute left-0 top-10 w-[18ch] rounded-md border bg-white py-2 shadow-sm">
+              <AnimatedItem
+                animation="scale"
+                transitionType="tween"
+                className="absolute left-0 top-10 z-10 origin-top-left"
+              >
+                <ul className="w-[15ch] rounded-md border bg-white py-2 shadow-sm">
                   <li className="duration-300 hover:bg-slate-200/40">
                     <button className="px-4 py-1">Edit</button>
                   </li>
@@ -54,10 +58,15 @@ const TodoItemGrid: React.FC<Props> = ({ todoItem }) => {
           </AnimatePresence>
         </div>
       </div>
+
       <p className="py-4">{todoItem.description}</p>
-      <time className="text-sm text-gray-400" suppressHydrationWarning>
-        {formatDate(todoItem.createdAt)}
-      </time>
+
+      <div className="flex items-center justify-between">
+        <time className="text-sm text-gray-400" suppressHydrationWarning>
+          {formatDate(todoItem.createdAt)}
+        </time>
+        <input type="checkbox" defaultChecked={todoItem.isCompleted} />
+      </div>
     </div>
   );
 };

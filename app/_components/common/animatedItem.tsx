@@ -1,17 +1,25 @@
 "use client";
 
 import { motion as m } from "framer-motion";
+import { cn } from "@/app/_utils/cn";
 
 interface Props {
-  animation: "opacity";
+  animation: "opacity" | "scale";
   transitionType?: "tween" | "spring";
   children: Readonly<React.ReactNode>;
+  className?: string;
 }
 
 const variants = {
   opacity: {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
+    exit: { opacity: 0 },
+  },
+  scale: {
+    hidden: { scale: 0.95, opacity: 0 },
+    visible: { scale: 1, opacity: 1 },
+    exit: { opacity: 0 },
   },
 };
 
@@ -31,6 +39,7 @@ const AnimatedItem: React.FC<Props> = ({
   animation,
   transitionType,
   children,
+  className,
 }) => {
   transitionType = transitionType ?? "spring";
   return (
@@ -38,9 +47,9 @@ const AnimatedItem: React.FC<Props> = ({
       variants={variants[animation]}
       initial="hidden"
       animate="visible"
-      exit="hidden"
+      exit="exit"
       transition={transition[transitionType]}
-      className="origin-bottom-left"
+      className={cn(className)}
     >
       {children}
     </m.div>

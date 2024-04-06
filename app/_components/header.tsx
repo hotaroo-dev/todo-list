@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   const boxShadow = useTransform(
     scrollY,
     [20, 40],
-    ["0 0 0 #0003", "0 1px 2px #0003"],
+    ["0 0 0 #0002", "0 1px 1px #0002"],
   );
 
   return (
@@ -36,7 +36,7 @@ const Header: React.FC = () => {
             Progress
           </ActiveLink>
         </ul>
-        <div className="flex flex-1 justify-end"></div>
+        <div className="hidden flex-1 sm:flex"></div>
       </div>
     </m.header>
   );

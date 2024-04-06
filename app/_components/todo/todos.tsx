@@ -11,22 +11,22 @@ interface Props {
 
 const Todos: React.FC<Props> = ({ todos }) => {
   const searchParams = useSearchParams();
-  const viewType = searchParams.get("viewType");
+  const viewType = searchParams.get("viewType") ?? "grid";
 
-  if (viewType === "grid") {
+  if (viewType === "list") {
     return (
-      <ul className="grid grid-cols-3 gap-4">
+      <ul className="space-y-4">
         {todos.map((todoItem) => (
-          <TodoItemGrid key={todoItem.id} todoItem={todoItem} />
+          <TodoItem key={todoItem.id} todoItem={todoItem} />
         ))}
       </ul>
     );
   }
 
   return (
-    <ul className="space-y-4">
+    <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {todos.map((todoItem) => (
-        <TodoItem key={todoItem.id} todoItem={todoItem} />
+        <TodoItemGrid key={todoItem.id} todoItem={todoItem} />
       ))}
     </ul>
   );

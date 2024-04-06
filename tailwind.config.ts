@@ -13,8 +13,8 @@ const config: Config = {
         center: true,
         padding: {
           DEFAULT: "1rem",
-          md: "1.25rem",
-          lg: "1.5rem",
+          md: "1.5rem",
+          lg: "2rem",
         },
       },
       screens: {
@@ -31,12 +31,10 @@ const config: Config = {
           950: "#208368",
         },
       },
-      boxShadow: {
-        focus: "0 0 0 2px",
-      },
     },
   },
   plugins: [
+    require("@tailwindcss/forms"),
     plugin(function ({ addUtilities }) {
       addUtilities({
         ".flex-center": {

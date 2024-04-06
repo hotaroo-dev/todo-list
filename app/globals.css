@@ -19,6 +19,19 @@ body {
   background: var(--background);
 }
 
+@layer base {
+  input:focus,
+  textarea:focus {
+    @apply border-jade-900 ring-jade-900;
+  }
+  [type="checkbox"] {
+    @apply h-6 w-6 rounded-full border-stone-300 text-jade-900;
+  }
+  [type="checkbox"]:focus {
+    @apply ring-0;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
