@@ -5,7 +5,7 @@ Manage your tasks easily with a to-do list app that utilizes Ethereum smart cont
 ## Projects
 
 <p align="center">
-  <img width="600px" src="/preview.jpg"/>
+  <img width="600px" src="public/preview.jpg"/>
 </p>
 
 <p align="center">
