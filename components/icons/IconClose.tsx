@@ -1,4 +1,4 @@
-export function IconClose(props: SVGProps<SVGSVGElement>) {
+export function IconClose(props: React.SVGAttributes<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

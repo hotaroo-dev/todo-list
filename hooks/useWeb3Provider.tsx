@@ -57,7 +57,7 @@ export default function useWeb3Provider() {
   useEffect(() => {
     if (window == null) return;
 
-    if (localStorage.hasOwnProperty("isAuthenticated")) {
+    if (Object.hasOwnProperty.call(localStorage, "isAuthenticated")) {
       connectWallet();
     }
   }, [connectWallet, state.isAuthenticated]);

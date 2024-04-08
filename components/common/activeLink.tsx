@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { type UrlWithParsedQuery } from "url";
 import { motion as m } from "framer-motion";
 import { cn } from "@/libs/cn";
 
@@ -11,7 +12,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Link> {
 
 const ActiveLink: React.FC<Props> = (props) => {
   const pathname = usePathname();
-  const isActive = pathname === props.href.pathname;
+  const isActive = pathname === (props.href as UrlWithParsedQuery).pathname;
   const activeClassName = props.activeClassName ?? "text-jade-900";
 
   return (

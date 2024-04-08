@@ -1,4 +1,4 @@
-export function IconGrid(props: SVGProps<SVGSVGElement>) {
+export function IconGrid(props: React.SVGAttributes<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
