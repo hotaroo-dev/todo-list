@@ -23,7 +23,7 @@ const Header: React.FC = () => {
           <Avatar fallback="T" />
           <h1 className="ml-4 font-bold uppercase text-jade-900">Todos</h1>
         </div>
-        <ul className="flex justify-center gap-4">
+        <ul className="hidden justify-center gap-4 sm:flex">
           <ActiveLink
             href={{ pathname: "/", query: { viewType } }}
             className="rounded-md px-4 py-2"

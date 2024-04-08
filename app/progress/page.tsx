@@ -4,25 +4,25 @@ export default function Progress() {
       date: `Day 1`,
       title: "Learn about Ethereum",
       description:
-        "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+        "After learning about Ethereum's blockchain, smart contracts, and web3, I discovered that the cryptocurrency (ETH) is called Ether.",
     },
     {
       date: `Day 2`,
-      title: "Learn about Ethereum",
+      title: "Project setup",
       description:
-        "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+        "Using Next.js, tailwindcss, framer motion and Integrate smart contracts with ethers.js.",
     },
     {
       date: `Day 3 - 4`,
-      title: "Learn about Ethereum",
+      title: "Build User Interface",
       description:
-        "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+        "This is a challenging part for me when selecting which UI to use for the project. I spend a lot of time searching for the appropriate UI.",
     },
     {
       date: `Day 5 - 7`,
-      title: "Learn about Ethereum",
+      title: "Integrate frontend with smart contracts",
       description:
-        "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+        "I spend a significant amount of time integrating and testing smart contracts. Truffle and Ganache are excellent tools for this purpose.",
     },
   ];
 
