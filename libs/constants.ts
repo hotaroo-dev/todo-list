@@ -1,4 +1,4 @@
 import TodoList from "@/smart-contract/build/contracts/TodoList.json";
 
-export const contractAddress = "0xC8c3251eeCD32aD5ca66a01aBa5852Deb2354364";
+export const contractAddress = "0x4e8edc61f9c16dc5908e5a281f391b5e33f6dbb8";
 export const contractAbi = TodoList.abi;
