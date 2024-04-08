@@ -1,4 +1,4 @@
-import { cn } from "@/app/_utils/cn";
+import { cn } from "@/libs/cn";
 
 interface Props extends React.ComponentPropsWithoutRef<"button"> {
   radius?: "rounded" | "full";

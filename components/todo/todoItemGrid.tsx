@@ -2,20 +2,36 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { ITodo } from "@/app/_types/todo";
-import { formatDate } from "@/app/_utils/formatDate";
-import { generateColors } from "@/app/_utils/generateColors";
+import { formatDate } from "@/libs/formatDate";
+import { generateColors } from "@/libs/generateColors";
 import BaseButton from "../common/baseButton";
 import AnimatedItem from "../common/animatedItem";
 import { IconEllipsis } from "../icons/IconEllipsis";
+import useTodo, { ITodo } from "@/hooks/useTodo";
 
 interface Props {
   todoItem: ITodo;
+  setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
 }
 
-const TodoItemGrid: React.FC<Props> = ({ todoItem }) => {
+const TodoItemGrid: React.FC<Props> = ({ todoItem, setTodos }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const { toggleCompleted, deleteTodo } = useTodo();
   const colors = useMemo(generateColors, [todoItem]);
+  const createdAt = formatDate(todoItem.createdAt);
+
+  const handleChange = async () => {
+    await toggleCompleted(todoItem.id);
+  };
+
+  const handleDelete = async () => {
+    await deleteTodo(todoItem.id);
+
+    // handling ui
+    setTodos((todos) => todos.filter((item) => item.id !== todoItem.id));
+    setShowMenu(false);
+  };
+
   const toggleShowMenu = () => {
     setShowMenu((prev) => !prev);
   };
@@ -50,7 +66,9 @@ const TodoItemGrid: React.FC<Props> = ({ todoItem }) => {
                     <button className="px-4 py-1">Edit</button>
                   </li>
                   <li className="duration-300 hover:bg-slate-200/40">
-                    <button className="px-4 py-1">Delete</button>
+                    <button className="px-4 py-1" onClick={handleDelete}>
+                      Delete
+                    </button>
                   </li>
                 </ul>
               </AnimatedItem>
@@ -63,9 +81,14 @@ const TodoItemGrid: React.FC<Props> = ({ todoItem }) => {
 
       <div className="flex items-center justify-between">
         <time className="text-sm text-gray-400" suppressHydrationWarning>
-          {formatDate(todoItem.createdAt)}
+          {createdAt}
         </time>
-        <input type="checkbox" defaultChecked={todoItem.isCompleted} />
+
+        <input
+          type="checkbox"
+          defaultChecked={todoItem.isCompleted}
+          onChange={handleChange}
+        />
       </div>
     </div>
   );

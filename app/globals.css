@@ -20,8 +20,12 @@ body {
 }
 
 @layer base {
-  input:focus,
-  textarea:focus {
+  :focus-visible {
+    @apply outline-jade-900;
+  }
+  input[type="text"]:focus,
+  textarea:focus,
+  button:focus-visible {
     @apply border-jade-900 ring-jade-900;
   }
   [type="checkbox"] {

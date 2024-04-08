@@ -1,13 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { IconAdd } from "../icons/IconAdd";
-import AnimatedItem from "../common/animatedItem";
-import TodoForm from "./todoForm";
 import { AnimatePresence, motion as m } from "framer-motion";
+import AnimatedItem from "../common/animatedItem";
 import BaseButton from "../common/baseButton";
+import TodoForm from "./todoForm";
+import { IconAdd } from "../icons/IconAdd";
+import { ITodo } from "@/hooks/useTodo";
 
-const TodoDialog: React.FC = () => {
+interface Props {
+  setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
+}
+
+const TodoDialog: React.FC<Props> = ({ setTodos }) => {
   const [showDialog, setShowDialog] = useState(false);
   const closeDialog = () => {
     setShowDialog(false);
@@ -25,7 +30,7 @@ const TodoDialog: React.FC = () => {
       <AnimatePresence>
         {showDialog && (
           <m.div
-            className="fixed inset-y-0 right-0 z-20 w-full max-w-md bg-white shadow-md"
+            className="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white shadow-md"
             variants={slideIn}
             initial="hidden"
             animate="visible"
@@ -33,7 +38,7 @@ const TodoDialog: React.FC = () => {
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
           >
             <AnimatedItem animation="opacity">
-              <TodoForm closeDialog={closeDialog} />
+              <TodoForm closeDialog={closeDialog} setTodos={setTodos} />
             </AnimatedItem>
           </m.div>
         )}

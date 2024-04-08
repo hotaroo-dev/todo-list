@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion as m } from "framer-motion";
-import { cn } from "@/app/_utils/cn";
+import { cn } from "@/libs/cn";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Link> {
   activeClassName?: string;

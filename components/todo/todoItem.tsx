@@ -2,43 +2,62 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { ITodo } from "@/app/_types/todo";
-import { formatDate } from "@/app/_utils/formatDate";
-import { generateColors } from "@/app/_utils/generateColors";
+import { formatDate } from "@/libs/formatDate";
+import { generateColors } from "@/libs/generateColors";
 import BaseButton from "../common/baseButton";
 import AnimatedItem from "../common/animatedItem";
 import { IconEllipsis } from "../icons/IconEllipsis";
+import useTodo, { ITodo } from "@/hooks/useTodo";
 
 interface Props {
   todoItem: ITodo;
+  setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
 }
 
 const TodoItem: React.FC<Props> = ({ todoItem }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const { toggleCompleted, deleteTodo } = useTodo();
   const colors = useMemo(generateColors, [todoItem]);
+  const createdAt = formatDate(todoItem.createdAt);
+
+  const handleChange = async () => {
+    await toggleCompleted(todoItem.id);
+  };
+
+  const handleDelete = async () => {
+    await deleteTodo(todoItem.id);
+  };
+
   const toggleShowMenu = () => {
     setShowMenu((prev) => !prev);
   };
 
   return (
     <div className="flex items-center gap-10 rounded-xl border bg-stone-100 p-4 duration-300 hover:border-[#6b7280]">
-      <h1
-        className="rounded-full border px-4 py-0.5"
-        style={{ ...colors }}
-        suppressHydrationWarning
-      >
-        {todoItem.name}
-      </h1>
+      <div className="flex-1">
+        <h1
+          className="inline-block rounded-full border px-4 py-0.5"
+          style={{ ...colors }}
+          suppressHydrationWarning
+        >
+          {todoItem.name}
+        </h1>
+      </div>
 
-      <div className="ml-[20%] flex-1 leading-tight">
+      <div className="flex-1 basis-1/2 leading-tight">
         <p>{todoItem.description}</p>
         <time className="text-sm text-gray-400" suppressHydrationWarning>
-          {formatDate(todoItem.createdAt)}
+          {createdAt}
         </time>
       </div>
 
       <div className="relative flex items-center gap-2.5">
-        <input type="checkbox" defaultChecked={todoItem.isCompleted} />
+        <input
+          type="checkbox"
+          name="isCompleted"
+          defaultChecked={todoItem.isCompleted}
+          onChange={handleChange}
+        />
         <BaseButton
           className="aspect-square h-8 duration-300 hover:bg-stone-200"
           onClick={toggleShowMenu}
@@ -57,7 +76,9 @@ const TodoItem: React.FC<Props> = ({ todoItem }) => {
                   <button className="px-4 py-1">Edit</button>
                 </li>
                 <li className="duration-300 hover:bg-slate-200/40">
-                  <button className="px-4 py-1">Delete</button>
+                  <button className="px-4 py-1" onClick={handleDelete}>
+                    Delete
+                  </button>
                 </li>
               </ul>
             </AnimatedItem>

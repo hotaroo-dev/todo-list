@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { cn } from "@/app/_utils/cn";
+import { cn } from "@/libs/cn";
 
 interface Props
   extends Omit<React.ComponentPropsWithoutRef<typeof Image>, "src" | "alt"> {

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion as m } from "framer-motion";
-import { cn } from "@/app/_utils/cn";
+import { cn } from "@/libs/cn";
 
 interface Props {
   animation: "opacity" | "scale";

@@ -2,12 +2,13 @@
 
 import { useSearchParams } from "next/navigation";
 import { motion as m, useTransform, useScroll } from "framer-motion";
-import ActiveLink from "./common/activeLink";
-import Avatar from "./common/avatar";
+import ActiveLink from "../common/activeLink";
+import Avatar from "../common/avatar";
+import ConnectWalletButton from "../connectWalletButton";
 
 const Header: React.FC = () => {
   const searchParams = useSearchParams();
-  const viewType = searchParams.get("viewType");
+  const viewType = searchParams.get("viewType") ?? "grid";
   const { scrollY } = useScroll();
   const boxShadow = useTransform(
     scrollY,
@@ -16,7 +17,7 @@ const Header: React.FC = () => {
   );
 
   return (
-    <m.header className="sticky top-0 z-10 bg-white" style={{ boxShadow }}>
+    <m.header className="sticky top-0 z-20 bg-white" style={{ boxShadow }}>
       <div className="container flex items-center py-4">
         <div className="flex flex-1 items-center">
           <Avatar fallback="T" />
@@ -36,7 +37,9 @@ const Header: React.FC = () => {
             Progress
           </ActiveLink>
         </ul>
-        <div className="hidden flex-1 sm:flex"></div>
+        <div className="flex flex-1 justify-end">
+          <ConnectWalletButton />
+        </div>
       </div>
     </m.header>
   );

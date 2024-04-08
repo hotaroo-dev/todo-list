@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./_components/header";
-import AnimatedPage from "./_components/common/animatedPage";
+import Header from "@/components/layout/header";
+import AnimatedPage from "@/components/common/animatedPage";
+import Web3ContextProvider from "@/context/web3Context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        <main className="container py-8">
-          <AnimatedPage>{children}</AnimatedPage>
-        </main>
+        <Web3ContextProvider>
+          <>
+            <Header />
+            <main className="container py-8">
+              <AnimatedPage>{children}</AnimatedPage>
+            </main>
+          </>
+        </Web3ContextProvider>
       </body>
     </html>
   );
