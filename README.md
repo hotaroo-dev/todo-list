@@ -81,7 +81,7 @@ If everything went well, we can make sure in Ganache that the contract has been 
   <img width="600px" src="public/ganache-preview.jpg"/>
 </p>
 
-After you can select contracts tab on ganache and link truffle projects as it will show useful data such as contracts and data it stores
+On Ganache, select the Contracts tab and link Truffle projects to view useful data such as contracts and stored data
 
 <div>
   <img width="600px" src="public/ganache-contracts.jpg" />
@@ -94,7 +94,7 @@ Here what it shows
   <img width="600px" src="public/ganache-preview.jpg"/>
 </p>
 
-You can contract address here as it will be use to connect from front-end
+You can get contract address here as it will be use to connect from front-end
 
 <p>
   <img width="600px" src="public/ganache-preview.jpg"/>
