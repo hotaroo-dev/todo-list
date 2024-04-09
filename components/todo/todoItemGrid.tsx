@@ -1,23 +1,26 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { formatDate } from "@/libs/formatDate";
-import { generateColors } from "@/libs/generateColors";
 import BaseButton from "../common/baseButton";
 import AnimatedItem from "../common/animatedItem";
 import { IconEllipsis } from "../icons/IconEllipsis";
 import useTodo, { ITodo } from "@/hooks/useTodo";
 
 interface Props {
-  todoItem: ITodo;
   setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
+  todoItem: ITodo;
+  todoColor: {
+    color: string;
+    background: string;
+    borderColor: string;
+  };
 }
 
-const TodoItemGrid: React.FC<Props> = ({ todoItem, setTodos }) => {
+const TodoItemGrid: React.FC<Props> = ({ todoItem, todoColor, setTodos }) => {
   const [showMenu, setShowMenu] = useState(false);
   const { toggleCompleted, deleteTodo } = useTodo();
-  const colors = useMemo(generateColors, [todoItem]);
   const createdAt = formatDate(todoItem.createdAt);
 
   const handleChange = async () => {
@@ -41,7 +44,7 @@ const TodoItemGrid: React.FC<Props> = ({ todoItem, setTodos }) => {
       <div className="flex items-center justify-between">
         <h1
           className="rounded-full border px-4 py-0.5"
-          style={{ ...colors }}
+          style={{ ...todoColor }}
           suppressHydrationWarning
         >
           {todoItem.name}
