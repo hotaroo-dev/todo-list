@@ -54,6 +54,15 @@ contract TodoList {
         emit DeleteTodo(todoId, todos[todoId].isDeleted);
     }
 
+    function editTodoDescription(
+        uint todoId,
+        string memory _description
+    ) public {
+        Todo memory todo = todos[todoId];
+        todo.description = _description;
+        todos[todoId] = todo;
+    }
+
     function toggleCompleted(uint todoId) external {
         Todo memory todo = todos[todoId];
         todo.isCompleted = !todo.isCompleted;
