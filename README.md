@@ -36,9 +36,9 @@ Install the Dependency:
 
 ```shell
 npm i
+```
 
 <br/>
-```
 
 ## After that you can deploy smart contract locally using [Truffle](https://archive.trufflesuite.com/) and [Ganache](https://archive.trufflesuite.com/ganache/)
 
