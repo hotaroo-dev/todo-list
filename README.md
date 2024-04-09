@@ -14,6 +14,8 @@ Manage your tasks easily with a to-do list app that utilizes Ethereum smart cont
   <a href="https://todo-list-wine-gamma.vercel.app/">🖥️ Live Demo</a>
 </p>
 
+> The deployment on Vercel isn't working because I'm still figuring out how to deploy the smart contract on the mainnet.
+
 <br/>
 
 ## Features
@@ -45,7 +47,7 @@ npm i -g truffle
 truffle version
 ```
 
-Once it is done, you can go to [[trufflesuite.com/ganache/](http://trufflesuite.com/ganache/),](https://archive.trufflesuite.com/ganache/) to install Ganache
+Once it is done, you can go to [tufflesuite.com/ganache](https://archive.trufflesuite.com/ganache/) to install ganache.
 
 Now that we have Truffle and Ganache installed, we can start deploy a TodoList contract start by change to smart-contracts directory.
 
@@ -69,13 +71,13 @@ truffle migrate
 
 Make sure Ganache is open and running. As this is our first migration, Truffle will deploy both contracts: *Migrations* and *Storage*.
 
-<p align="center">
-  <img width="600px" src="public/migration.jpg"/>
+<p>
+  <img width="400px" src="public/migration.jpg"/>
 </p>
 
 If everything went well, we can make sure in Ganache that the contract has been sent to the blockchain.
 
-<p align="center">
+<p>
   <img width="600px" src="public/ganache-preview.jpg"/>
 </p>
 
