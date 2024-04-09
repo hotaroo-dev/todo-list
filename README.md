@@ -14,7 +14,7 @@ Manage your tasks easily with a to-do list app that utilizes Ethereum smart cont
   <a href="https://todo-list-wine-gamma.vercel.app/">🖥️ Live Demo</a>
 </p>
 
-> The deployment on Vercel isn't working because I'm still figuring out how to deploy the smart contract on the mainnet.
+> Smart contracts have been deployed on the Sepolia testnet
 
 <br/>
 
@@ -36,6 +36,8 @@ Install the Dependency:
 
 ```shell
 npm i
+
+<br/>
 ```
 
 ## After that you can deploy smart contract locally using [Truffle](https://archive.trufflesuite.com/) and [Ganache](https://archive.trufflesuite.com/ganache/)
@@ -54,6 +56,8 @@ Now that we have Truffle and Ganache installed, we can start deploy a TodoList c
 ```shell
 cd smart-contracts
 ```
+
+<br/>
 
 ## Compiling and deploy a smart contract in Truffle
 
@@ -117,6 +121,8 @@ npm run dev
 ```
 
 **WE DONE!**
+
+<br/>
 
 ## One last thing
 
