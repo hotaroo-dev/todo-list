@@ -83,21 +83,23 @@ If everything went well, we can make sure in Ganache that the contract has been 
 
 On Ganache, select the Contracts tab and link Truffle projects to view useful data such as contracts and stored data
 
-<div>
+<p>
   <img width="600px" src="public/ganache-contracts.jpg" />
-  <img width="600px src="public/ganache-link.jpg" />
-</div>
+</p>
+<p>
+  <img width="600px src="public/ganache-project.jpg" />
+</p>
 
 Here what it shows
 
 <p>
-  <img width="600px" src="public/ganache-preview.jpg"/>
+  <img width="600px" src="public/ganache-info.jpg"/>
 </p>
 
 You can get contract address here as it will be use to connect from front-end
 
 <p>
-  <img width="600px" src="public/ganache-preview.jpg"/>
+  <img width="600px" src="public/ganache-todolist.jpg"/>
 </p>
 
 Now that we have deploy and get contract address we can go back from smart-contracts directory and go to libs/constants.ts to set a contract address
