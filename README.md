@@ -123,5 +123,5 @@ npm run dev
 We can import an account from Ganache and use it for testing purposes.
 
 <p>
-  <img width="600px" src="public/ganache-account.jpg"/>
+  <img width="800px" src="public/ganache-account.jpg"/>
 </p>
