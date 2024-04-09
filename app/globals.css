@@ -27,6 +27,9 @@ body {
   [type="checkbox"]:focus {
     @apply ring-0;
   }
+  p:focus-visible {
+    outline: none;
+  }
 }
 
 @layer utilities {

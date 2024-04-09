@@ -1,16 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { formatDate } from "@/libs/formatDate";
+import useTodo, { ITodo } from "@/hooks/useTodo";
 import BaseButton from "../common/baseButton";
 import AnimatedItem from "../common/animatedItem";
 import { IconEllipsis } from "../icons/IconEllipsis";
-import useTodo, { ITodo } from "@/hooks/useTodo";
+import { IconEdit } from "../icons/IconEdit";
 
 interface Props {
-  todoItem: ITodo;
   setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
+  todoItem: ITodo;
   todoColor: {
     color: string;
     background: string;
@@ -18,10 +19,26 @@ interface Props {
   };
 }
 
-const TodoItem: React.FC<Props> = ({ todoItem, todoColor }) => {
+const TodoItem: React.FC<Props> = ({ todoItem, todoColor, setTodos }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const { toggleCompleted, deleteTodo } = useTodo();
+  const [editable, setEditable] = useState(false);
+  const { toggleCompleted, editTodoDescription, deleteTodo } = useTodo();
+  const descRef = useRef<HTMLParagraphElement>(null);
   const createdAt = formatDate(todoItem.createdAt);
+
+  const toggleShowMenu = () => {
+    setShowMenu((prev) => !prev);
+  };
+
+  const handleEdit = () => {
+    setEditable(true);
+    setShowMenu(false);
+  };
+
+  const editDescription = async () => {
+    await editTodoDescription(todoItem.id, descRef.current?.textContent ?? "");
+    setEditable(false);
+  };
 
   const handleChange = async () => {
     await toggleCompleted(todoItem.id);
@@ -29,10 +46,10 @@ const TodoItem: React.FC<Props> = ({ todoItem, todoColor }) => {
 
   const handleDelete = async () => {
     await deleteTodo(todoItem.id);
-  };
 
-  const toggleShowMenu = () => {
-    setShowMenu((prev) => !prev);
+    // handling ui
+    setTodos((todos) => todos.filter((item) => item.id !== todoItem.id));
+    setShowMenu(false);
   };
 
   return (
@@ -48,13 +65,28 @@ const TodoItem: React.FC<Props> = ({ todoItem, todoColor }) => {
       </div>
 
       <div className="flex-1 basis-1/2 leading-tight">
-        <p>{todoItem.description}</p>
+        <p
+          contentEditable={editable}
+          ref={descRef}
+          suppressContentEditableWarning={true}
+        >
+          {todoItem.description}
+        </p>
         <time className="text-sm text-gray-400" suppressHydrationWarning>
           {createdAt}
         </time>
       </div>
 
-      <div className="relative flex items-center gap-2.5">
+      <div className="relative flex basis-24 items-center justify-end gap-2.5">
+        {editable && (
+          <button
+            className="translate-y-0.5 text-gray-600 flex-center"
+            onClick={editDescription}
+          >
+            <IconEdit />
+          </button>
+        )}
+
         <input
           type="checkbox"
           name="isCompleted"
@@ -76,7 +108,9 @@ const TodoItem: React.FC<Props> = ({ todoItem, todoColor }) => {
             >
               <ul className="w-[15ch] rounded-md border bg-white py-2 shadow-sm">
                 <li className="duration-300 hover:bg-slate-200/40">
-                  <button className="px-4 py-1">Edit</button>
+                  <button className="px-4 py-1" onClick={handleEdit}>
+                    Edit
+                  </button>
                 </li>
                 <li className="duration-300 hover:bg-slate-200/40">
                   <button className="px-4 py-1" onClick={handleDelete}>

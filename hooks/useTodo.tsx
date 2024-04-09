@@ -71,7 +71,27 @@ const useTodo = () => {
     [contract],
   );
 
-  return { getTodos, addTodo, deleteTodo, toggleCompleted };
+  const editTodoDescription = useCallback(
+    async (id: number, newDesc: string) => {
+      if (!contract) return;
+
+      try {
+        const transaction = await contract.editTodoDescription(id, newDesc);
+        await transaction.wait();
+      } catch (error) {
+        // handle error
+      }
+    },
+    [contract],
+  );
+
+  return {
+    getTodos,
+    addTodo,
+    deleteTodo,
+    toggleCompleted,
+    editTodoDescription,
+  };
 };
 
 export default useTodo;

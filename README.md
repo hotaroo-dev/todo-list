@@ -26,7 +26,7 @@ Manage your tasks easily with a to-do list app that utilizes Ethereum smart cont
 - [x] Delete a todo item.
 - [x] Toggle completion status of todo item.
 - [x] Search todo item with title.
-- [ ] Edit a todo item.
+- [x] Edit a description of todo item.
 
 <br/>
 
