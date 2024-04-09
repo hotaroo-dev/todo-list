@@ -11,7 +11,7 @@ Manage your tasks easily with a to-do list app that utilizes Ethereum smart cont
 </p>
 
 <p align="center">
-  <a href="">🖥️ Live Demo</a>
+  <a href="https://todo-list-wine-gamma.vercel.app/">🖥️ Live Demo</a>
 </p>
 
 <br/>
@@ -23,6 +23,7 @@ Manage your tasks easily with a to-do list app that utilizes Ethereum smart cont
 - [x] Add a new todo item.
 - [x] Delete a todo item.
 - [x] Toggle completion status of todo item.
+- [x] Search todo item with title.
 - [ ] Edit a todo item.
 
 <br/>
@@ -69,32 +70,32 @@ truffle migrate
 Make sure Ganache is open and running. As this is our first migration, Truffle will deploy both contracts: *Migrations* and *Storage*.
 
 <p align="center">
-  <img width="800px" src="public/migration.jpg"/>
+  <img width="600px" src="public/migration.jpg"/>
 </p>
 
 If everything went well, we can make sure in Ganache that the contract has been sent to the blockchain.
 
 <p align="center">
-  <img width="800px" src="public/ganache-preview.jpg"/>
+  <img width="600px" src="public/ganache-preview.jpg"/>
 </p>
 
 After you can select contracts tab on ganache and link truffle projects as it will show useful data such as contracts and data it stores
 
-<div style="display: flex; gap: 16px">
-  <img src="public/ganache-contracts.jpg" />
-  <img src="public/ganache-contracts.jpg" />
+<div>
+  <img width="600px" src="public/ganache-contracts.jpg" />
+  <img width="600px src="public/ganache-link.jpg" />
 </div>
 
 Here what it shows
 
 <p>
-  <img width="800px" src="public/ganache-preview.jpg"/>
+  <img width="600px" src="public/ganache-preview.jpg"/>
 </p>
 
 You can contract address here as it will be use to connect from front-end
 
 <p>
-  <img width="800px" src="public/ganache-preview.jpg"/>
+  <img width="600px" src="public/ganache-preview.jpg"/>
 </p>
 
 Now that we have deploy and get contract address we can go back from smart-contracts directory and go to libs/constants.ts to set a contract address
@@ -120,5 +121,5 @@ npm run dev
 We can import an account from Ganache and use it for testing purposes.
 
 <p>
-  <img width="800px" src="public/ganache-account.jpg"/>
+  <img width="600px" src="public/ganache-account.jpg"/>
 </p>
