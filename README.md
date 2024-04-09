@@ -83,12 +83,10 @@ If everything went well, we can make sure in Ganache that the contract has been 
 
 On Ganache, select the Contracts tab and link Truffle projects to view useful data such as contracts and stored data
 
-<p>
+<div style="display: flex;">
   <img width="600px" src="public/ganache-contracts.jpg" />
-</p>
-<p>
-  <img width="600px src="public/ganache-project.jpg" />
-</p>
+  <img width="600px" src="public/ganache-project.jpg" />
+</div>
 
 Here what it shows
 
